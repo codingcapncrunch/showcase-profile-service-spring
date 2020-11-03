@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.2.6.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.lozano</groupId>
+	<artifactId>QuizApp_UI</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+	<name>QuizApp_UI</name>
+	<description>QuizApp_UI</description>
+
+	<properties>
+		<npm.executable>npm</npm.executable>
+		<ng.executable>ng</ng.executable>
+	</properties>
+
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.5.0</version>
+				<executions>
+					<execution>
+						<id>npm install (initialize)</id>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<phase>initialize</phase>
+						<configuration>
+							<executable>${npm.executable}</executable>
+							<workingDirectory>src</workingDirectory>
+							<arguments>
+								<argument>install</argument>
+							</arguments>
+						</configuration>
+					</execution>
+
+					<execution>
+						<id>run-ng-build</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>${ng.executable}</executable>
+							<workingDirectory>src</workingDirectory>
+							<arguments>
+								<argument>build</argument>
+<!--								<argument>&#45;&#45;prod</argument>-->
+							</arguments>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+<!--	<profiles>-->
+<!--		<profile>-->
+<!--			<id>platform-windows</id>-->
+<!--			<activation>-->
+<!--				<os>-->
+<!--					<family>windows</family>-->
+<!--				</os>-->
+<!--			</activation>-->
+<!--			<properties>-->
+<!--				<npm.executable>npm.cmd</npm.executable>-->
+<!--				<ng.executable>ng.cmd</ng.executable>>-->
+<!--			</properties>-->
+<!--		</profile>-->
+<!--	</profiles>-->
+
+</project>

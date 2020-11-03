@@ -1,0 +1,23 @@
+**Quiz App Overview**
+
+A lightweight web app that allows a kindergartener the ability to practice basic arithmetic.  At home page, a user can select a new game.  A user would be promoted to select game difficulty (easy, medium, high), and then the option to start or cancel.
+
+**High Level User Stories**
+
+1. Home page
+    - Welcome message
+    - Start new game button
+2. Configure new game page
+    - Select difficulty (easy, medium, hard)
+    - Select timed or untimed
+    - Select addition & subtraction and/or multiplication & division
+    - Select start or cancel
+3. In Game page
+    - Question section (large font)
+    - Free form answer box (medium font) or A. through D. multiple choice options
+    - Show correct or incorrect graphic, if incorrect show answer 
+4. Game over popup modal
+    - Show number of correct and incorrect answers
+    - Show total time taken
+    - Show all time best record
+    - Play again button or
