@@ -1,6 +1,6 @@
-**Quiz App Overview**
+**Quiz App Overview - Release 1.0**
 
-A lightweight web app that allows a kindergartener the ability to practice basic arithmetic.  At home page, a user can select a new game.  A user would be promoted to select game difficulty (easy, medium, high), and then the option to start or cancel.
+A lightweight web app that allows kindergarteners and adults the ability to practice basic arithmetic.  At home page, a user can select a new game.  A user would be promoted to select game difficulty (easy, medium, high), and then the option to start or cancel.
 
 **High Level User Stories**
 
@@ -10,7 +10,7 @@ A lightweight web app that allows a kindergartener the ability to practice basic
 2. Configure new game page
     - Select difficulty (easy, medium, hard)
     - Select timed or untimed
-    - Select addition & subtraction and/or multiplication & division
+    - Select addition, subtraction, multiplication, and/or division
     - Select start or cancel
 3. In Game page
     - Question section (large font)
@@ -21,3 +21,19 @@ A lightweight web app that allows a kindergartener the ability to practice basic
     - Show total time taken
     - Show all time best record
     - Play again button or close button (go back to home page)
+
+**Difficulty Scope**
+
+1. Easy
+    - 10 questions
+    - addition & subtraction value limitations: min 0, max 20
+    - multiplication & division value limitations: min 0, max 5
+2. Medium
+    - 15 questions
+    - addition & subtraction value limitations: min 0, max 100
+    - multiplication & division value limitations: min 0, max 10
+2. Hard
+    - 20 questions
+    - addition & subtraction value limitations: min 0, max 1000
+    - multiplication & division value limitations: min 0, max 20
+    - allow negative numbers
