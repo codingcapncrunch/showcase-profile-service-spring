@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-welcome',
-  templateUrl: './welcome.component.html',
-  styleUrls: ['./welcome.component.css']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
-export class WelcomeComponent implements OnInit {
+export class HomeComponent implements OnInit {
 
   constructor() { }
 
@@ -16,4 +16,5 @@ export class WelcomeComponent implements OnInit {
   showMore() {
     console.log("show more selected");
   }
+
 }
