@@ -2,7 +2,104 @@
 <div class="container">
   <div class="row-full">
 
-    <p>game-a works!</p>
+    <br>
+    <!-- Button to Open the Modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+      Configure Game
+    </button>
+
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Configure Game</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+
+            <form>
+
+              <div class="col-auto my-1">
+                <label for="inlineFormCustomSelect">Difficulty</label>
+                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+<!--                    <option selected>Choose difficulty</option>-->
+                  <option selected value="easy">Easy</option>
+                  <option value="medium">Medium</option>
+                  <option value="hard">Hard</option>
+                </select>
+              </div>
+
+              <br>
+
+              <div class="col-auto my-1">
+              <label for="gridCheckAddition">Operations</label>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="gridCheckAddition">
+                  <label class="form-check-label" for="gridCheckAddition">
+                    Addition
+                  </label>
+                </div>
+
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="gridCheckSubtraction">
+                  <label class="form-check-label" for="gridCheckSubtraction">
+                    Subtraction
+                  </label>
+                </div>
+
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="gridCheckMultiplication">
+                  <label class="form-check-label" for="gridCheckMultiplication">
+                    Multiplication
+                  </label>
+                </div>
+
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="gridCheckDivision">
+                  <label class="form-check-label" for="gridCheckDivision">
+                    Division
+                  </label>
+                </div>
+              </div>
+
+              <br>
+
+              <div class="col-auto my-1">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="timed" id="radioTimed" value="radioTimedValue" checked>
+                  <label class="form-check-label" for="radioTimed">
+                    Timed
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="timed" id="radioUntimed" value="radioUntimedValue">
+                  <label class="form-check-label" for="radioUntimed">
+                    Untimed
+                  </label>
+                </div>
+              </div>
+<!--                <div class="col-auto my-1">-->
+<!--                  <button type="submit" class="btn btn-primary">Submit</button>-->
+<!--                </div>-->
+
+            </form>
+
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" data-dismiss="modal">Start</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
 
   </div>
 </div>

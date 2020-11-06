@@ -27,7 +27,7 @@ const routes: Routes = [
     GameselectorComponent,
     GameAComponent,
     HomeComponent,
-    LearnMoreComponent
+    LearnMoreComponent,
   ],
   imports: [
     BrowserModule,
