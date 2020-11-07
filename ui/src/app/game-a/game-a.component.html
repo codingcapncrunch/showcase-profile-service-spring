@@ -39,37 +39,39 @@
               <div class="col-auto my-1">
               <label for="gridCheckAddition">Operations</label>
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="gridCheckAddition">
+                  <input class="form-check-input" type="checkbox" id="gridCheckAddition" [checked]="gridCheckAdditionValue" (change)="gridCheckAdditionValue = !gridCheckAdditionValue">
                   <label class="form-check-label" for="gridCheckAddition">
                     Addition
                   </label>
                 </div>
 
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="gridCheckSubtraction">
+                  <input class="form-check-input" type="checkbox" id="gridCheckSubtraction" [checked]="gridCheckSubtractionValue" (change)="gridCheckSubtractionValue = !gridCheckSubtractionValue">
                   <label class="form-check-label" for="gridCheckSubtraction">
                     Subtraction
                   </label>
                 </div>
 
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="gridCheckMultiplication">
+                  <input class="form-check-input" type="checkbox" id="gridCheckMultiplication" [checked]="gridCheckMultiplicationValue" (change)="gridCheckMultiplicationValue = !gridCheckMultiplicationValue">
                   <label class="form-check-label" for="gridCheckMultiplication">
                     Multiplication
                   </label>
                 </div>
 
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="gridCheckDivision">
+                  <input class="form-check-input" type="checkbox" id="gridCheckDivision" [checked]="gridCheckDivisionValue" (change)="gridCheckDivisionValue = !gridCheckDivisionValue">
                   <label class="form-check-label" for="gridCheckDivision">
                     Division
                   </label>
                 </div>
+                <p style="color:red" *ngIf="invalidSelection">{{invalidFormMessage}}</p>
               </div>
 
               <br>
 
               <div class="col-auto my-1">
+                <label for="radioTimed">Timing</label>
                 <div class="form-check">
                   <input class="form-check-input" type="radio" name="timed" id="radioTimed" value="radioTimedValue" checked>
                   <label class="form-check-label" for="radioTimed">
@@ -93,7 +95,7 @@
 
           <!-- Modal footer -->
           <div class="modal-footer">
-            <button type="button" class="btn btn-success" data-dismiss="modal">Start</button>
+            <button type="button" class="btn btn-success" (click)="submitGameConfig()">Start</button>
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
           </div>
 

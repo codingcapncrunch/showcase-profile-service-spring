@@ -7,6 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GameAComponent implements OnInit {
 
+  invalidSelection = false;
+  invalidFormMessage = '';
+  gridCheckAdditionValue = true;
+  gridCheckSubtractionValue = false;
+  gridCheckMultiplicationValue = false;
+  gridCheckDivisionValue = false;
 
 
   constructor() { }
@@ -14,4 +20,15 @@ export class GameAComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  submitGameConfig(){
+
+    if (!this.gridCheckAdditionValue && !this.gridCheckSubtractionValue && !this.gridCheckMultiplicationValue && !this.gridCheckDivisionValue){
+      this.invalidFormMessage = 'Please select at least one operation.';
+      this.invalidSelection = true;
+    } else {
+      this.invalidFormMessage = '';
+      this.invalidSelection = false;
+    }
+
+  }
 }
