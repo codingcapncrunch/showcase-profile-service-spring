@@ -17,7 +17,7 @@
 
 	<properties>
 		<npm.executable>npm</npm.executable>
-		<ng.executable>ng</ng.executable>
+<!--		<ng.executable>ng</ng.executable>-->
 	</properties>
 
 
@@ -50,11 +50,11 @@
 							<goal>exec</goal>
 						</goals>
 						<configuration>
-							<executable>${ng.executable}</executable>
+							<executable>${npm.executable}</executable>
 							<workingDirectory>src</workingDirectory>
 							<arguments>
-								<argument>build</argument>
-<!--								<argument>&#45;&#45;prod</argument>-->
+								<argument>run</argument>
+                <argument>build</argument>
 							</arguments>
 						</configuration>
 					</execution>
@@ -62,20 +62,5 @@
 			</plugin>
 		</plugins>
 	</build>
-
-<!--	<profiles>-->
-<!--		<profile>-->
-<!--			<id>platform-windows</id>-->
-<!--			<activation>-->
-<!--				<os>-->
-<!--					<family>windows</family>-->
-<!--				</os>-->
-<!--			</activation>-->
-<!--			<properties>-->
-<!--				<npm.executable>npm.cmd</npm.executable>-->
-<!--				<ng.executable>ng.cmd</ng.executable>>-->
-<!--			</properties>-->
-<!--		</profile>-->
-<!--	</profiles>-->
 
 </project>
