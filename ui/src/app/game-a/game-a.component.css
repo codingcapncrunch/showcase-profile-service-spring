@@ -1,0 +1,12 @@
+.lozano {
+  border: 2px solid #343a40;
+  border-radius: 10px;
+  /*height: 400px;*/
+  padding: 25px 25px 25px 25px;
+  text-align: center;
+}
+
+.game-digit {
+  font-size: 80px;
+  padding: 40px;
+}

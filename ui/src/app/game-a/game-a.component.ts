@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-game-a',
   templateUrl: './game-a.component.html',
@@ -13,7 +14,10 @@ export class GameAComponent implements OnInit {
   gridCheckSubtractionValue = false;
   gridCheckMultiplicationValue = false;
   gridCheckDivisionValue = false;
-
+  gameOperation = '+';
+  gameNumberOne = 10;
+  gameNumberTwo = 15;
+  gameNumberThree = 25;
 
   constructor() { }
 
@@ -31,4 +35,6 @@ export class GameAComponent implements OnInit {
     }
 
   }
+
+
 }

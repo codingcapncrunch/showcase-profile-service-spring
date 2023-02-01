@@ -55,7 +55,7 @@
 							<target>
 								<mkdir dir="target/classes/static"/>
 								<copy todir="target/classes/static" overwrite="true">
-									<fileset dir="../ui/dist"/>
+									<fileset dir="../ui/dist/ui"/>
 								</copy>
 							</target>
 						</configuration>
