@@ -1,0 +1,8 @@
+
+Todo
+- create basic crud APIs for customer profile data
+- create basic in memory data store
+- create unit tests
+- throw uniform exceptions if invalid data or other exceptions
+- manually validate object (until step 3)
+- use Lombok for data validation
