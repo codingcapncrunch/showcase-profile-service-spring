@@ -1,8 +1,13 @@
 
 Todo
-- create basic crud APIs for customer profile data
-- create basic in memory data store
+Done - create basic crud APIs for customer profile data
+Done - create basic in memory data store
 - create unit tests
-- throw uniform exceptions if invalid data or other exceptions
+Done throw uniform exceptions if invalid data or other exceptions
 - manually validate object (until step 3)
 - use Lombok for data validation
+- wire up a JPA repository (local DB)
+- add seed data scripts
+- add created & updated details to domain model objects
+- add API authorization
+- additional pojo data validation on create & update

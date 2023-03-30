@@ -1,9 +1,13 @@
 package com.org.myapp.domain.service;
 
+import com.org.myapp.config.exception.AppException;
+import com.org.myapp.config.exception.ExceptionEnum;
 import com.org.myapp.domain.model.Profile;
+import com.org.myapp.utils.Utils;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -29,28 +33,28 @@ public class InMemoryProfileServiceImpl implements ProfileService {
     @Override
     public Profile createProfile(Profile profile) {
 
-        if (this.isValidCreate(profile)){
-            String generatedId = UUID.randomUUID().toString();
-            log.info("ProfileService - generating new uuid {} for profile.", generatedId);
+        this.isValidProfileData(profile);
+        String generatedId = UUID.randomUUID().toString();
+        log.info("ProfileService - generating new uuid {} for profile.", generatedId);
 
-            profile.setId(generatedId);
-            this.inMemoryProfileDB.put(generatedId, profile);
-            return profile;
-        }
-        log.error("ProfileService - createProfile request invalid!");
-        return null;
+        profile.setId(generatedId);
+        this.inMemoryProfileDB.put(generatedId, profile);
+        return profile;
 
     }
 
     @Override
     public Profile getProfile(String id) {
 
-        if(this.isValidProfileId(id)){
-            return this.inMemoryProfileDB.get(id);
-        }
-        log.error("ProfileService - getProfile request invalid!");
-        return null;
+        this.isValidProfileId(id);
 
+        Profile profile = this.inMemoryProfileDB.get(id);
+        if (profile!=null){
+            return profile;
+        } else {
+            Utils.throwException(new AppException(ExceptionEnum.PR1000, "Profile ID attempted for get "+id));
+        }
+        return null;
     }
 
     @Override
@@ -58,76 +62,63 @@ public class InMemoryProfileServiceImpl implements ProfileService {
 
         Profile existingProfile;
 
-        if (this.isValidProfileId(profile.getId())){
-            existingProfile = this.getProfile(profile.getId());
+        this.isValidProfileId(profile.getId());
+        this.isValidProfileData(profile);
 
-            if (existingProfile!=null){
-                // profile exists, update it
-                existingProfile.setFirstName(profile.getFirstName());
-                existingProfile.setLastName(profile.getLastName());
+        existingProfile = this.getProfile(profile.getId());
 
-                if (profile.getAddress()!=null){
-                    //update address
-                    existingProfile.getAddress().setLineOne(profile.getAddress().getLineOne());
-                    existingProfile.getAddress().setLineTwo(profile.getAddress().getLineTwo());
-                    existingProfile.getAddress().setCity(profile.getAddress().getCity());
-                    existingProfile.getAddress().setState(profile.getAddress().getState());
-                    existingProfile.getAddress().setZipCode(profile.getAddress().getZipCode());
-                } else {
-                    //null address
-                    existingProfile.setAddress(null);
-                }
+        if (existingProfile!=null){
+            // profile exists, update it
+            existingProfile.setFirstName(profile.getFirstName());
+            existingProfile.setLastName(profile.getLastName());
 
-                this.inMemoryProfileDB.put(existingProfile.getId(), existingProfile);
-                return existingProfile;
-
+            if (profile.getAddress()!=null){
+                //update address
+                existingProfile.getAddress().setLineOne(profile.getAddress().getLineOne());
+                existingProfile.getAddress().setLineTwo(profile.getAddress().getLineTwo());
+                existingProfile.getAddress().setCity(profile.getAddress().getCity());
+                existingProfile.getAddress().setState(profile.getAddress().getState());
+                existingProfile.getAddress().setZipCode(profile.getAddress().getZipCode());
             } else {
-                // profile doesn't not exist to update
-                log.error("ProfileService - profile with id {} does not exist to be updated.", profile.getId());
-                return null;
+                //null address
+                existingProfile.setAddress(null);
             }
 
+            this.inMemoryProfileDB.put(existingProfile.getId(), existingProfile);
+            return existingProfile;
 
         } else {
-            log.error("ProfileService - profile not updated due to invalid profile ID.");
+            Utils.throwException(new AppException(ExceptionEnum.PR1000));
             return null;
         }
+
     }
 
     @Override
     public void deleteProfile(String id) {
 
-        if (isValidProfileId(id)){
-            Profile existingProfile = this.inMemoryProfileDB.get(id);
-            if (existingProfile!=null){
-                this.inMemoryProfileDB.remove(id);
-                log.info("ProfileService - profile id {} removed successfully", id);
+        this.isValidProfileId(id);
+        Profile existingProfile = this.inMemoryProfileDB.get(id);
+        if (existingProfile!=null){
+            this.inMemoryProfileDB.remove(id);
+            log.info("ProfileService - profile id {} removed successfully", id);
 
-            } else {
-                log.error("ProfileService - profile not found");
-            }
         } else {
-            log.error("ProfileService - could not delete profile");
+            Utils.throwException(new AppException(ExceptionEnum.PR1000, "Profile id provided: "+id));
         }
-
     }
 
-    private boolean isValidProfileId(String id){
+    private void isValidProfileId(String id) {
         if (StringUtils.isEmpty(id)){
-            log.error("ProfileService - profile ID is empty/null");
-            return false;
-        }
-        return true;
-    }
-
-    private boolean isValidCreate(Profile profile){
-
-        if (StringUtils.isEmpty(profile.getId())){
-            log.info("ProfileService - Profile data valid.");
-            return true;
-        } else {
-            log.error("ProfileService - Profile data IS NOT valid.");
-            return false;
+            Utils.throwException(new AppException(ExceptionEnum.PR1001));
         }
     }
+
+    private void isValidProfileData(Profile profile){
+        //todo; additional data validation
+        if (StringUtils.isEmpty(profile.getFirstName()) || StringUtils.isEmpty(profile.getLastName())){
+            Utils.throwException(new AppException(ExceptionEnum.PR1002));
+        }
+    }
+
 }
