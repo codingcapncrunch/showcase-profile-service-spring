@@ -3,7 +3,7 @@ Todo
 Done - create basic crud APIs for customer profile data
 Done - create basic in memory data store
 - create unit tests
-Done throw uniform exceptions if invalid data or other exceptions
+Done - throw uniform exceptions if invalid data or other exceptions
 - manually validate object (until step 3)
 - use Lombok for data validation
 - wire up a JPA repository (local DB)

@@ -13,9 +13,9 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = {AppException.class})
     public ResponseEntity<Object> handleAppException(AppException ex){
         if (ex.getInternalMessage()!=null){
-            log.error("AppException: {}, status: {}, internal message: {}", ex.getUserMessage(), ex.getStatus().toString(), ex.getInternalMessage());
+            log.error("ErrorCode: {}, AppException: {}, status: {}, internal message: {}", ex.getExceptionEnum().name(), ex.getUserMessage(), ex.getStatus().toString(), ex.getInternalMessage());
         } else {
-            log.error("AppException: {}, status: {}", ex.getUserMessage(), ex.getStatus().toString());
+            log.error("ErrorCode: {}, AppException: {}, status: {}", ex.getExceptionEnum().name(), ex.getUserMessage(), ex.getStatus().toString());
         }
         return new ResponseEntity<>(ex.getAppExceptionBody(), ex.getStatus());
     }
@@ -23,7 +23,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = {Exception.class})
     public ResponseEntity<Object> handleException(Exception ex){
         AppException appException = new AppException(ExceptionEnum.PR5000);
-        log.error("Unknown exception message: {}, ex stacktrace: {}", ex.getMessage(), ex.toString());
+        log.error("ErrorCode: {}, Unknown exception message: {}, ex stacktrace: {}", appException.getExceptionEnum().name(), ex.getMessage(), ex.toString());
         return new ResponseEntity<>(appException.getAppExceptionBody(), appException.getStatus());
     }
 
