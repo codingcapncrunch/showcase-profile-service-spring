@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping(value="/profile")
 public class ProfileController {
@@ -22,7 +24,7 @@ public class ProfileController {
 
     //create
     @PostMapping
-    public ResponseEntity createProfile(@RequestBody Profile profile){
+    public ResponseEntity createProfile(@RequestBody @Valid Profile profile){
         com.org.myapp.domain.model.Profile newProfile = this.profileService.createProfile(this.profileTranslator.toDomainModel(profile));
         return ResponseEntity.ok(newProfile!=null ? this.profileTranslator.toApiModel(newProfile): null);
     }
@@ -37,7 +39,7 @@ public class ProfileController {
 
     //update
     @PutMapping
-    public ResponseEntity updateProfile(@RequestBody Profile profile){
+    public ResponseEntity updateProfile(@RequestBody @Valid Profile profile){
         com.org.myapp.domain.model.Profile newProfile = this.profileService.updateProfile(this.profileTranslator.toDomainModel(profile));
         return ResponseEntity.ok(newProfile!=null ? this.profileTranslator.toApiModel(newProfile): null);
     }
