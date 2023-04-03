@@ -12,3 +12,4 @@ Done - used javax for data validation on DTOs
 - add API authorization
 - additional pojo data validation on create & update
 - trim profile pojo data
+- create custom email field validator to exclude '!' character
