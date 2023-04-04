@@ -2,7 +2,7 @@
 Todo
 Done - create basic crud APIs for customer profile data
 Done - create basic in memory data store
-- create unit tests
+Done - create unit tests (pojos)
 Done - throw uniform exceptions if invalid data or other exceptions
 - manually validate object
 Done - used javax for data validation on DTOs
@@ -13,3 +13,4 @@ Done - used javax for data validation on DTOs
 - additional pojo data validation on create & update
 - trim profile pojo data
 - create custom email field validator to exclude '!' character
+- throw exception for just " " address line two (trim and then validate)
