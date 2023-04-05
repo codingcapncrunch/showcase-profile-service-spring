@@ -2,6 +2,8 @@ package com.org.myapp.api.model;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
 import static org.junit.Assert.*;
 
 import javax.validation.ConstraintViolation;

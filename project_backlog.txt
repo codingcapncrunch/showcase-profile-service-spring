@@ -6,7 +6,8 @@ Done - create unit tests (pojos)
 Done - throw uniform exceptions if invalid data or other exceptions
 - manually validate object
 Done - used javax for data validation on DTOs
-- wire up a JPA repository (local DB)
+- wire up a JPA repository (local MySQL DB)
+- add flyway
 - add seed data scripts
 - add created & updated details to domain model objects
 - add API authorization
