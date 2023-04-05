@@ -6,8 +6,11 @@ Done - create unit tests (pojos)
 Done - throw uniform exceptions if invalid data or other exceptions
 - manually validate object
 Done - used javax for data validation on DTOs
+Done - add MySQL datasource
+Done - add jasypt encryption for datasource pw
+Done - upgrade to springboot 2.7 (did this to troubleshoot/get past jasypt issues)
 - wire up a JPA repository (local MySQL DB)
-- add flyway
+Done - add flyway
 - add seed data scripts
 - add created & updated details to domain model objects
 - add API authorization
