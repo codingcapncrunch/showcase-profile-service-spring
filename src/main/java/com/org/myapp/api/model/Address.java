@@ -1,11 +1,18 @@
 package com.org.myapp.api.model;
 
+import com.org.myapp.domain.model.AddressTypeEnum;
 import lombok.Data;
 
 import javax.validation.constraints.*;
 
 @Data
 public class Address {
+
+    @Max(value = 999999, message = "invalid address id")
+    private int id;
+
+    @NotNull(message = "address type cannot be null")
+    private AddressTypeEnum type;
 
     @NotBlank(message = "line one cannot be blank")
     @NotNull(message = "line one cannot be null")

@@ -10,6 +10,8 @@ public class AddressTranslator extends Translator<Address, com.org.myapp.domain.
     public Address toApiModel(com.org.myapp.domain.model.Address domain) {
         Address apiAddress = new Address();
         if (domain!=null){
+            apiAddress.setId(domain.getId());
+            apiAddress.setType(domain.getType());
             apiAddress.setLineOne(domain.getLineOne());
             apiAddress.setLineTwo(domain.getLineTwo());
             apiAddress.setCity(domain.getCity());
@@ -23,6 +25,8 @@ public class AddressTranslator extends Translator<Address, com.org.myapp.domain.
     public com.org.myapp.domain.model.Address toDomainModel(Address api) {
         com.org.myapp.domain.model.Address domainAddress = new com.org.myapp.domain.model.Address();
         if (api!=null){
+            domainAddress.setId(api.getId());
+            domainAddress.setType(api.getType());
             domainAddress.setLineOne(api.getLineOne());
             domainAddress.setLineTwo(api.getLineTwo());
             domainAddress.setCity(api.getCity());

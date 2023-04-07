@@ -1,16 +1,17 @@
 package com.org.myapp.api.model;
 
+import com.org.myapp.domain.model.AddressTypeEnum;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.boot.test.context.SpringBootTest;
-
-import static org.junit.Assert.*;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 import java.util.Set;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class ProfileTest {
 
@@ -35,6 +36,8 @@ public class ProfileTest {
         profile.setEmail("test@test.com");
 
         Address address = new Address();
+        address.setId(1000);
+        address.setType(AddressTypeEnum.HOME);
         address.setLineOne("123 line one");
         address.setLineTwo("123 line two");
         address.setCity("city");
