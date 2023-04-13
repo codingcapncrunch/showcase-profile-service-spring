@@ -4,7 +4,6 @@ Done - create basic crud APIs for customer profile data
 Done - create basic in memory data store
 Done - create unit tests (pojos)
 Done - throw uniform exceptions if invalid data or other exceptions
-- manually validate object
 Done - used javax for data validation on DTOs
 Done - add MySQL datasource
 Done - add jasypt encryption for datasource pw
@@ -12,6 +11,7 @@ Done - upgrade to springboot 2.7 (did this to troubleshoot/get past jasypt issue
 Done - wire up a JPA repository and define profile and address entities (local MySQL DB)
 Done - add flyway
 Done - add address type (home, work, other)
+Done - Made address required profile data
 - Allow up to three addresses of any type
 - add seed data scripts
 - add created & updated details to domain model objects

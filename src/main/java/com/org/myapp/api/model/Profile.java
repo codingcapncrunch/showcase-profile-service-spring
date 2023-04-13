@@ -35,6 +35,7 @@ public class Profile {
     private String email;
 
     @Valid
+    @NotNull(message = "address cannot be null")
     private Address address;
 
 }

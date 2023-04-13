@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "PROFILE_TBL")
+@Table(name = "profile_tbl")
 public class Profile {
 
     @Id
@@ -18,16 +18,16 @@ public class Profile {
     )
     private String id;
 
-    @Column(name = "FIRST_NAME", length = 40, nullable = false)
+    @Column(name = "first_name", length = 40)
     private String firstName;
 
-    @Column(name = "MIDDLE_NAME", length = 40, nullable = true)
+    @Column(name = "middle_name", length = 40)
     private String middleName;
 
-    @Column(name = "LAST_NAME", length = 40, nullable = false)
+    @Column(name = "last_name", length = 40)
     private String lastName;
 
-    @Column(name = "EMAIL", length = 40, nullable = false)
+    @Column(name = "email", length = 40)
     private String email;
 
     @OneToOne(cascade = CascadeType.ALL)

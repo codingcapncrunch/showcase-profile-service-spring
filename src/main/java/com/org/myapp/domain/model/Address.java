@@ -6,30 +6,30 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "ADDRESS_TBL")
+@Table(name = "address_tbl")
 public class Address {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
 
     @Enumerated(EnumType.ORDINAL)
-    @Column(name = "TYPE", length = 10, nullable = false)
+    @Column(name = "type", length = 10)
     private AddressTypeEnum type;
 
-    @Column(name = "LINE_ONE", length=40, nullable=false)
+    @Column(name = "line_one", length=40)
     private String lineOne;
 
-    @Column(name = "LINE_TWO", length=40, nullable = true)
+    @Column(name = "line_two", length=40)
     private String lineTwo;
 
-    @Column(name= "CITY", length = 40, nullable = false)
+    @Column(name= "city", length = 40)
     private String city;
 
-    @Column(name = "STATE", length = 40, nullable = false)
+    @Column(name = "state", length = 40)
     private String state;
 
-    @Column(name = "ZIP_CODE", length = 10, nullable = false)
+    @Column(name = "zip_code", length = 10)
     private int zipCode;
 
     @OneToOne(mappedBy = "address")

@@ -1,38 +1,40 @@
-CREATE TABLE PROFILE_TBL (
+CREATE TABLE profile_tbl (
 
                          id varchar(40) NOT NULL,
-                         firstname varchar(40) NOT NULL,
-                         middlename varchar(40),
-                         lastname varchar(40) NOT NULL,
-                         email varchar(40) NOT NULL,
+                         first_name varchar(40),
+                         middle_name varchar(40),
+                         last_name varchar(40),
+                         email varchar(40),
                          CONSTRAINT PK_PROFILE PRIMARY KEY (id)
 
 );
 
-CREATE TABLE ADDRESS_TBL (
+CREATE TABLE address_tbl (
 
                          id int NOT NULL AUTO_INCREMENT,
-                         type varchar(40) NOT NULL,
-                         lineone varchar(40) NOT NULL,
-                         linetwo varchar(40),
-                         city varchar(40) NOT NULL,
-                         state varchar(40) NOT NULL,
-                         zipcode int NOT NULL,
+                         type varchar(40),
+                         line_one varchar(40),
+                         line_two varchar(40),
+                         city varchar(40),
+                         state varchar(40),
+                         zip_code int,
                          CONSTRAINT PK_ADDRESS PRIMARY KEY (id)
 
 );
 
-ALTER TABLE ADDRESS_TBL AUTO_INCREMENT = 1000;
+ALTER TABLE address_tbl AUTO_INCREMENT = 1000;
 
-CREATE TABLE PROFILE_ADDRESS_TBL (
+CREATE TABLE profile_address_tbl (
 
                          profile_id varchar(40) NOT NULL,
                          address_id int NOT NULL,
-                         CONSTRAINT PK_PROFILE_ADDRESS PRIMARY KEY (profile_id, address_id),
-                         CONSTRAINT FK_PROFILE_ID FOREIGN KEY (profile_id) REFERENCES PROFILE_TBL(id),
-                         CONSTRAINT FK_ADDRESS_ID FOREIGN KEY (address_id) REFERENCES ADDRESS_TBL(id)
+                         CONSTRAINT pk_profile_address PRIMARY KEY (profile_id, address_id),
+                         CONSTRAINT fk_profile_id FOREIGN KEY (profile_id) REFERENCES profile_tbl(id),
+                         CONSTRAINT fk_address_id FOREIGN KEY (address_id) REFERENCES address_tbl(id)
 
 );
+
+
 
 -- ROLLBACK SQL:
 

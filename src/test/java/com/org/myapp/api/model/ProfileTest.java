@@ -586,9 +586,9 @@ public class ProfileTest {
         Set<ConstraintViolation<Profile>> violationSet = this.validator.validate(this.testProfile);
         assertTrue(violationSet.isEmpty());
 
-        // test null address is okay
+        // test null address throws error
         this.testProfile.setAddress(null);
         violationSet = this.validator.validate(this.testProfile);
-        assertTrue(violationSet.isEmpty());
+        assertFalse(violationSet.isEmpty());
     }
 }

@@ -12,6 +12,7 @@ import org.springframework.util.StringUtils;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -47,9 +48,9 @@ public class InMemoryProfileServiceImpl implements ProfileService {
 
         this.isValidProfileId(id);
 
-        Profile profile = this.inMemoryProfileDB.get(id);
-        if (profile!=null){
-            return profile;
+        Optional<Profile> profile = Optional.ofNullable(this.inMemoryProfileDB.get(id));
+        if (profile.isPresent()){
+            return profile.get();
         } else {
             Utils.throwException(new AppException(ExceptionEnum.PR1000, "Profile ID attempted for get "+id));
         }
@@ -69,10 +70,13 @@ public class InMemoryProfileServiceImpl implements ProfileService {
         if (existingProfile!=null){
             // profile exists, update it
             existingProfile.setFirstName(profile.getFirstName());
+            existingProfile.setMiddleName(profile.getMiddleName());
             existingProfile.setLastName(profile.getLastName());
+            existingProfile.setEmail(profile.getEmail());
 
             if (profile.getAddress()!=null){
                 //update address
+                existingProfile.getAddress().setType(profile.getAddress().getType());
                 existingProfile.getAddress().setLineOne(profile.getAddress().getLineOne());
                 existingProfile.getAddress().setLineTwo(profile.getAddress().getLineTwo());
                 existingProfile.getAddress().setCity(profile.getAddress().getCity());
