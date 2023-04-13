@@ -16,6 +16,7 @@ Done - Made address required profile data
 - add seed data scripts
 - add index to email, first and last names, and zipcode( ? not sure)
 Done - Add search API (firstname and lastname combo, email address)
+- Add pagination to search
 - Add search API (zip code)
 - Add pagination to search API
 - Add search unit tests
