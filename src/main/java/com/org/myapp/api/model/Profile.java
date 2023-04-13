@@ -7,6 +7,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
 
 @Data
 public class Profile {
@@ -33,6 +34,10 @@ public class Profile {
     @Email(message = "invalid email address")
     @Size(max = 40, message = "email exceeds max length")
     private String email;
+
+    private LocalDateTime createDateTime;
+
+    private LocalDateTime updateDateTime;
 
     @Valid
     @NotNull(message = "address cannot be null")

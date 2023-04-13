@@ -1,8 +1,11 @@
 package com.org.myapp.domain.model;
 
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
@@ -31,6 +34,14 @@ public class Address {
 
     @Column(name = "zip_code", length = 10)
     private int zipCode;
+
+    @CreationTimestamp
+    @Column(name = "create_datetime")
+    private LocalDateTime createDateTime;
+
+    @UpdateTimestamp
+    @Column(name = "update_datetime")
+    private LocalDateTime updateDateTime;
 
     @OneToOne(mappedBy = "address")
     private Profile profile;

@@ -1,9 +1,12 @@
 package com.org.myapp.domain.model;
 
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
@@ -29,6 +32,14 @@ public class Profile {
 
     @Column(name = "email", length = 40)
     private String email;
+
+    @CreationTimestamp
+    @Column(name = "create_datetime")
+    private LocalDateTime createDateTime;
+
+    @UpdateTimestamp
+    @Column(name = "update_datetime")
+    private LocalDateTime updateDateTime;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinTable(name = "profile_address_tbl",

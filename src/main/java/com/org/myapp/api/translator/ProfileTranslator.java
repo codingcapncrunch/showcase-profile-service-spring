@@ -23,6 +23,8 @@ public class ProfileTranslator extends Translator<Profile, com.org.myapp.domain.
             apiProfile.setMiddleName(domain.getMiddleName());
             apiProfile.setLastName(domain.getLastName());
             apiProfile.setEmail(domain.getEmail());
+            apiProfile.setCreateDateTime(domain.getCreateDateTime());
+            apiProfile.setUpdateDateTime(domain.getUpdateDateTime());
             apiProfile.setAddress(this.addressTranslator.toApiModel(domain.getAddress()));
         }
         return apiProfile;
@@ -37,6 +39,8 @@ public class ProfileTranslator extends Translator<Profile, com.org.myapp.domain.
             domainProfile.setMiddleName(api.getMiddleName());
             domainProfile.setLastName(api.getLastName());
             domainProfile.setEmail(api.getEmail());
+            domainProfile.setCreateDateTime(api.getCreateDateTime());
+            domainProfile.setUpdateDateTime(api.getUpdateDateTime());
             domainProfile.setAddress(this.addressTranslator.toDomainModel(api.getAddress()));
         }
         return domainProfile;

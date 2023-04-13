@@ -4,6 +4,7 @@ import com.org.myapp.domain.model.AddressTypeEnum;
 import lombok.Data;
 
 import javax.validation.constraints.*;
+import java.time.LocalDateTime;
 
 @Data
 public class Address {
@@ -40,5 +41,9 @@ public class Address {
     @Max(value = 99999, message = "invalid seven digit zip code")
     @Min(value = 10000, message = "invalid seven digit zip code")
     private int zipCode;
+
+    private LocalDateTime createDateTime;
+
+    private LocalDateTime updateDateTime;
 
 }

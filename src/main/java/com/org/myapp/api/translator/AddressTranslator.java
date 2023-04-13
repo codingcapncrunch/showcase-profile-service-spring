@@ -17,6 +17,8 @@ public class AddressTranslator extends Translator<Address, com.org.myapp.domain.
             apiAddress.setCity(domain.getCity());
             apiAddress.setState(domain.getState());
             apiAddress.setZipCode(domain.getZipCode());
+            apiAddress.setCreateDateTime(domain.getCreateDateTime());
+            apiAddress.setUpdateDateTime(domain.getUpdateDateTime());
         }
         return apiAddress;
     }
@@ -32,6 +34,8 @@ public class AddressTranslator extends Translator<Address, com.org.myapp.domain.
             domainAddress.setCity(api.getCity());
             domainAddress.setState(api.getState());
             domainAddress.setZipCode(api.getZipCode());
+            domainAddress.setCreateDateTime(api.getCreateDateTime());
+            domainAddress.setUpdateDateTime(api.getUpdateDateTime());
         }
         return domainAddress;
     }
