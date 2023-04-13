@@ -8,7 +8,8 @@ public enum ExceptionEnum {
     PR1000("Profile not found", HttpStatus.NOT_FOUND),
     PR1001("Invalid profile ID", HttpStatus.BAD_REQUEST),
     PR1002("Profile must have a first and last name", HttpStatus.BAD_REQUEST),
-    PR1003("dto invalid", HttpStatus.BAD_REQUEST);
+    PR1003("dto invalid", HttpStatus.BAD_REQUEST),
+    PR1004("Invalid search request", HttpStatus.BAD_REQUEST);
 
     public final String message;
     public final HttpStatus httpStatus;

@@ -25,7 +25,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = {MethodArgumentNotValidException.class})
     public ResponseEntity<Object> handleMethodArguementNotValidException(MethodArgumentNotValidException ex){
         AppException appException = new AppException(ExceptionEnum.PR1003);
-        if (ex.getBindingResult()!=null && ex.getBindingResult().getAllErrors()!=null && !ex.getBindingResult().getAllErrors().isEmpty() && !StringUtils.isEmpty(ex.getBindingResult().getAllErrors().get(0).getDefaultMessage())) {
+        if (ex.getBindingResult()!=null && ex.getBindingResult().getAllErrors()!=null && !ex.getBindingResult().getAllErrors().isEmpty() && StringUtils.hasLength(ex.getBindingResult().getAllErrors().get(0).getDefaultMessage())) {
             appException.setUserMessage(appException.getUserMessage() + "; " + ex.getBindingResult().getAllErrors().get(0).getDefaultMessage());
         }
         log.error("ErrorCode: {}, AppException: {}", appException.getExceptionEnum().name(), appException.getUserMessage());

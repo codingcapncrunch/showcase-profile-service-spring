@@ -1,8 +1,10 @@
 package com.org.myapp.domain.service;
 
+import com.org.myapp.api.model.SearchRequest;
 import com.org.myapp.config.exception.AppException;
 import com.org.myapp.config.exception.ExceptionEnum;
 import com.org.myapp.domain.model.Profile;
+import com.org.myapp.domain.model.SearchResponse;
 import com.org.myapp.utils.Utils;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,10 +12,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 @Log4j2
@@ -111,15 +110,22 @@ public class InMemoryProfileServiceImpl implements ProfileService {
         }
     }
 
+    @Override
+    public SearchResponse searchProfile(SearchRequest searchRequest) {
+        //todo
+        log.info("************* searchProfile not implemented at InMemoryProfileServiceImpl *************");
+        return null;
+    }
+
     private void isValidProfileId(String id) {
-        if (StringUtils.isEmpty(id)){
+        if (!StringUtils.hasLength(id)){
             Utils.throwException(new AppException(ExceptionEnum.PR1001));
         }
     }
 
     private void isValidProfileData(Profile profile){
         //todo; additional data validation
-        if (StringUtils.isEmpty(profile.getFirstName()) || StringUtils.isEmpty(profile.getLastName())){
+        if (!StringUtils.hasLength(profile.getFirstName()) || !StringUtils.hasLength(profile.getLastName())){
             Utils.throwException(new AppException(ExceptionEnum.PR1002));
         }
     }

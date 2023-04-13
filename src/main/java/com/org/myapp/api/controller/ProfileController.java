@@ -1,7 +1,10 @@
 package com.org.myapp.api.controller;
 
 import com.org.myapp.api.model.Profile;
+import com.org.myapp.api.model.SearchRequest;
 import com.org.myapp.api.translator.ProfileTranslator;
+import com.org.myapp.api.translator.SearchTranslator;
+import com.org.myapp.domain.model.SearchResponse;
 import com.org.myapp.domain.service.ProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,11 +16,13 @@ import javax.validation.Valid;
 @RequestMapping(value="/profile")
 public class ProfileController {
 
+    private SearchTranslator searchTranslator;
     private ProfileService profileService;
     private ProfileTranslator profileTranslator;
 
     @Autowired
-    public ProfileController(ProfileService profileService, ProfileTranslator profileTranslator) {
+    public ProfileController(SearchTranslator searchTranslator, ProfileService profileService, ProfileTranslator profileTranslator) {
+        this.searchTranslator = searchTranslator;
         this.profileService = profileService;
         this.profileTranslator = profileTranslator;
     }
@@ -50,6 +55,14 @@ public class ProfileController {
     public ResponseEntity deleteProfile(@PathVariable String id){
         this.profileService.deleteProfile(id);
         return ResponseEntity.ok("deleted");
+    }
+
+    //search
+    @GetMapping
+    @RequestMapping(value="/search")
+    public ResponseEntity searchProfiles(@RequestBody SearchRequest searchRequest){
+        SearchResponse searchResponse = this.profileService.searchProfile(searchRequest);
+        return ResponseEntity.ok(searchResponse!=null ? this.searchTranslator.toApiModel(searchResponse) : null);
     }
 
 }

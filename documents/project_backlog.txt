@@ -14,7 +14,11 @@ Done - add address type (home, work, other)
 Done - Made address required profile data
 - Allow up to three addresses of any type
 - add seed data scripts
-- Add search API (firstname and lastname combo, email address, zipcode)
+- add index to email, first and last names, and zipcode( ? not sure)
+Done - Add search API (firstname and lastname combo, email address)
+- Add search API (zip code)
+- Add pagination to search API
+- Add search unit tests
 Done add created & updated details to domain model objects
 - add API authorization
 - trim profile pojo data
