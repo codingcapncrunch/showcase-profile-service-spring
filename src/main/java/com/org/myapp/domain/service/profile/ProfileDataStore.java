@@ -1,4 +1,4 @@
-package com.org.myapp.domain.service;
+package com.org.myapp.domain.service.profile;
 
 import com.org.myapp.domain.model.Profile;
 import org.springframework.data.jpa.repository.JpaRepository;

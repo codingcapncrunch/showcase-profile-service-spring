@@ -1,10 +1,12 @@
-package com.org.myapp.domain.service;
+package com.org.myapp.domain.service.profile;
 
 import com.org.myapp.api.model.SearchRequest;
 import com.org.myapp.config.exception.AppException;
 import com.org.myapp.config.exception.ExceptionEnum;
+import com.org.myapp.domain.model.Address;
 import com.org.myapp.domain.model.Profile;
 import com.org.myapp.domain.model.SearchResponse;
+import com.org.myapp.domain.service.addressValidator.AddressValidator;
 import com.org.myapp.utils.Utils;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,15 +31,20 @@ public class ProfileServiceImpl implements ProfileService {
     private int searchLimit;
 
     private ProfileDataStore profileDataStore;
+    private AddressValidator addressValidator;
 
     @Autowired
-    public ProfileServiceImpl(ProfileDataStore profileDataStore) {
+    public ProfileServiceImpl(ProfileDataStore profileDataStore, AddressValidator addressValidator) {
         this.profileDataStore = profileDataStore;
+        this.addressValidator = addressValidator;
     }
 
     @Override
     public Profile createProfile(Profile profile) {
-        return this.profileDataStore.save(profile);
+        if (this.addressValidator.isValidAddressCombination(profile.getAddress().getCity(), profile.getAddress().getState(), profile.getAddress().getZipCode())){
+            return this.profileDataStore.save(profile);
+        }
+        return null;
     }
 
     @Override
@@ -53,11 +60,15 @@ public class ProfileServiceImpl implements ProfileService {
 
     @Override
     public Profile updateProfile(Profile profile) {
-        Optional<Profile> existingProfile = this.profileDataStore.findById(profile.getId());
-        if (existingProfile.isPresent()){
-            return this.profileDataStore.save(profile);
-        } else {
-            Utils.throwException(new AppException(ExceptionEnum.PR1000, "Profile not found for ID "+profile.getId()));
+
+        if (this.addressValidator.isValidAddressCombination(profile.getAddress().getCity(), profile.getAddress().getState(), profile.getAddress().getZipCode())){
+
+            Optional<Profile> existingProfile = this.profileDataStore.findById(profile.getId());
+            if (existingProfile.isPresent()){
+                return this.profileDataStore.save(profile);
+            } else {
+                Utils.throwException(new AppException(ExceptionEnum.PR1000, "Profile not found for ID "+profile.getId()));
+            }
         }
         return null;
     }
@@ -117,4 +128,5 @@ public class ProfileServiceImpl implements ProfileService {
         Utils.throwException(new AppException(ExceptionEnum.PR1004));
         return null;
     }
+
 }

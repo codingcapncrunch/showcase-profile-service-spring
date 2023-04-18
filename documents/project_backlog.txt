@@ -12,7 +12,9 @@ Done - wire up a JPA repository and define profile and address entities (local M
 Done - add flyway
 Done - add address type (home, work, other)
 Done - Made address required profile data
-In Progress - Add basic address validation (city, state, zipcode)
+Done - Add basic address validation (city, state, zipcode) based off provided zipcode
+- Add in-memory cache for address information
+- Manage case sensitivity on profile and address info
 - Allow up to three addresses of any type
 - add seed data scripts
 - add index to email, first and last names, and zipcode( ? not sure)

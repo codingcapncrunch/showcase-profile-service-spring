@@ -1,4 +1,4 @@
-package com.org.myapp.domain.service;
+package com.org.myapp.domain.service.profile;
 
 import com.org.myapp.api.model.SearchRequest;
 import com.org.myapp.config.exception.AppException;

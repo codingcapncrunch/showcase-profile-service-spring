@@ -5,7 +5,7 @@ import com.org.myapp.api.model.SearchRequest;
 import com.org.myapp.api.translator.ProfileTranslator;
 import com.org.myapp.api.translator.SearchTranslator;
 import com.org.myapp.domain.model.SearchResponse;
-import com.org.myapp.domain.service.ProfileService;
+import com.org.myapp.domain.service.profile.ProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
