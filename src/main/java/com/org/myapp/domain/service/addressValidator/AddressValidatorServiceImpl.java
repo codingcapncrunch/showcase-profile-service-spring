@@ -12,13 +12,13 @@ import java.util.List;
 
 @Service
 @Log4j2
-public class AddressValidatorImpl implements AddressValidator {
+public class AddressValidatorServiceImpl implements AddressValidatorService {
 
     private AddressCityStateDataStore addressCityStateDataStore;
     private AddressZipCodeDataStore addressZipCodeDataStore;
 
     @Autowired
-    public AddressValidatorImpl(AddressCityStateDataStore addressCityStateDataStore, AddressZipCodeDataStore addressZipCodeDataStore) {
+    public AddressValidatorServiceImpl(AddressCityStateDataStore addressCityStateDataStore, AddressZipCodeDataStore addressZipCodeDataStore) {
         this.addressCityStateDataStore = addressCityStateDataStore;
         this.addressZipCodeDataStore = addressZipCodeDataStore;
     }

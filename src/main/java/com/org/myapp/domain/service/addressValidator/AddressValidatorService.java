@@ -2,7 +2,7 @@ package com.org.myapp.domain.service.addressValidator;
 
 import java.util.List;
 
-public interface AddressValidator {
+public interface AddressValidatorService {
 
     boolean isValidAddressCombination(String city, String state, int zipCode);
 

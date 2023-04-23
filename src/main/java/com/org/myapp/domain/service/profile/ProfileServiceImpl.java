@@ -3,10 +3,9 @@ package com.org.myapp.domain.service.profile;
 import com.org.myapp.api.model.SearchRequest;
 import com.org.myapp.config.exception.AppException;
 import com.org.myapp.config.exception.ExceptionEnum;
-import com.org.myapp.domain.model.Address;
 import com.org.myapp.domain.model.Profile;
 import com.org.myapp.domain.model.SearchResponse;
-import com.org.myapp.domain.service.addressValidator.AddressValidator;
+import com.org.myapp.domain.service.addressValidator.AddressValidatorService;
 import com.org.myapp.utils.Utils;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,17 +30,17 @@ public class ProfileServiceImpl implements ProfileService {
     private int searchLimit;
 
     private ProfileDataStore profileDataStore;
-    private AddressValidator addressValidator;
+    private AddressValidatorService addressValidatorService;
 
     @Autowired
-    public ProfileServiceImpl(ProfileDataStore profileDataStore, AddressValidator addressValidator) {
+    public ProfileServiceImpl(ProfileDataStore profileDataStore, AddressValidatorService addressValidatorService) {
         this.profileDataStore = profileDataStore;
-        this.addressValidator = addressValidator;
+        this.addressValidatorService = addressValidatorService;
     }
 
     @Override
     public Profile createProfile(Profile profile) {
-        if (this.addressValidator.isValidAddressCombination(profile.getAddress().getCity(), profile.getAddress().getState(), profile.getAddress().getZipCode())){
+        if (this.addressValidatorService.isValidAddressCombination(profile.getAddress().getCity(), profile.getAddress().getState(), profile.getAddress().getZipCode())){
             return this.profileDataStore.save(profile);
         }
         return null;
@@ -61,7 +60,7 @@ public class ProfileServiceImpl implements ProfileService {
     @Override
     public Profile updateProfile(Profile profile) {
 
-        if (this.addressValidator.isValidAddressCombination(profile.getAddress().getCity(), profile.getAddress().getState(), profile.getAddress().getZipCode())){
+        if (this.addressValidatorService.isValidAddressCombination(profile.getAddress().getCity(), profile.getAddress().getState(), profile.getAddress().getZipCode())){
 
             Optional<Profile> existingProfile = this.profileDataStore.findById(profile.getId());
             if (existingProfile.isPresent()){
