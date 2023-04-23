@@ -1,10 +1,10 @@
 ## 'showcase-service' - About The Project
 
-The purpose of this project is to finaly make public some of my github repository work.  I'm hoping to accomplish a few goals including:
+The purpose of this project is to finally make public some of my github repository work.  I'm hoping to accomplish a few goals including:
 
 1. Demonstrate usage of a service oriented backend pattern and key working capabilities expected in real-world Spring Boot projects (at least in my experience)
 2. Offer a working example of all the below stated concepts and capabilities working side-by-side
-3. Push past my imposter syndrome and pratice what I know
+3. Push past my imposter syndrome and practice what I know
 
 Intended concepts and key capabilities created/included:
 * Spring Boot application organized around API and domain level packages (API vs service oriented backend within a single deployable)
