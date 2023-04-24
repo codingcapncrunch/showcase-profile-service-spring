@@ -1,24 +1,28 @@
-## 'showcase-service' - About The Project
+## About the 'showcase-profile-service-spring' project
 
-The purpose of this project is to finally make public some of my github repository work.  I'm hoping to accomplish a few goals including:
+The purpose of this project is to showcase some of my github repository work with Spring Boot by developing a simple customer profile service.
 
-1. Demonstrate usage of a service oriented backend pattern and key working capabilities expected in real-world Spring Boot projects (at least in my experience)
+Some of the goals I hope to accomplish with this project include:
+
+1. Demonstrate a service oriented pattern and key capabilities commonplace in real-world Spring Boot projects
 2. Offer a working example of all the below stated concepts and capabilities working side-by-side
 3. Push past my imposter syndrome and practice what I know
 
-Intended concepts and key capabilities created/included:
-* Spring Boot application organized around API and domain level packages (API vs service oriented backend within a single deployable)
-* API and domain model objects (POJOs / DTOs) with an abstract Translator approach (toApiModel & toDomainModel methods)
-* POJO Javax validation (@Pattern, @Size, @NotNull, @Valid, etc.)
-* RestController classes with basic CRUD APIs (@GetMapping, @PostMapping, @PutMapping, @DeleteMapping, @RestController, @RequestMapping, etc.)
-* Interface & concrete class pattern for defined domain services ProfileService & AddressValidatorService (@Service)
-* Multiple implementations for a given interface (profile in-memory vs database impls)
-* Defined JpaRepository (@Repository) for profile and address related data
-* Entity definitions for profile and address objects (@Entity, @Table, @Column, @Enumerated, etc.) 
-* Native query usage on address related datastores (@Query)
-* Boilerplate POJO methods (getters & setters, etc.) with Lombok (@Data)
-* Flyway for managing database migrations / versions
-* Jasypt encryption for sensitive property file entries (db credentials)
-* Uniform exception handling & error messaging with GlobalExceptionHandler class (@ControllerAdvice, @ExceptionHandler)
-* Basic unit tests for profile and address javax validation (@SpringBootTest, @Test, etc.)
+Intended concepts and key capabilities showcased:
+* ___Spring Boot___ application organized around API and domain level packages (API vs service oriented backend within a single deployable)
+* API and domain model objects (POJOs / DTOs) with an abstract ___Translator___ approach (toApiModel & toDomainModel methods)
+* POJO ___Javax validation___ (@Pattern, @Size, @NotNull, @Valid, etc.)
+* ___RestController___ classes with basic CRUD APIs (@GetMapping, @PostMapping, @PutMapping, @DeleteMapping, @RestController, @RequestMapping, etc.)
+* ___Interface___ & concrete class pattern for defined domain services ProfileService & AddressValidatorService (@Service)
+* ___Multiple implementations___ for a given interface (profile in-memory vs database impls)
+* Defined ___JpaRepository___ (@Repository) for profile and address related data
+* ___Entity___ definitions for profile and address objects (@Entity, @Table, @Column, @Enumerated, etc.) 
+* ___Native query___ usage on address related datastores (@Query)
+* Boilerplate POJO methods (getters & setters, etc.) with ___Lombok___ (@Data)
+* ___Flyway___ for managing database migrations / versions
+* ___Jasypt___ encryption for sensitive property file entries (db credentials)
+* Uniform ___exception handling___ & ___error messaging___ with GlobalExceptionHandler class (@ControllerAdvice, @ExceptionHandler)
+* Basic ___unit tests___ for profile and address javax validation (@SpringBootTest, @Test, etc.)
 * ... more to come!
+
+Note the ./documents/project_backlog.txt file capturing future todo items.
