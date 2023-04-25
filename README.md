@@ -10,11 +10,12 @@ Some of the goals I hope to accomplish with this project include:
 
 Intended concepts and key capabilities showcased:
 * ___Spring Boot___ application organized around API and domain level packages (API vs service oriented backend within a single deployable)
+* Azure Portal __App Service__ deployable through __GitHub workflows__
 * API and domain model objects (POJOs / DTOs) with an abstract ___Translator___ approach (toApiModel & toDomainModel methods)
 * POJO ___Javax validation___ (@Pattern, @Size, @NotNull, @Valid, etc.)
 * ___RestController___ classes with basic CRUD APIs (@GetMapping, @PostMapping, @PutMapping, @DeleteMapping, @RestController, @RequestMapping, etc.)
 * ___Interface___ & concrete class pattern for defined domain services ProfileService & AddressValidatorService (@Service)
-* ___Multiple implementations___ for a given interface (profile in-memory vs database impls)
+* ___Multiple implementations___ for a given interface through the in-memory vs database profile impls (@ConditionalOnProperty)
 * Defined ___JpaRepository___ (@Repository) for profile and address related data
 * ___Entity___ definitions for profile and address objects (@Entity, @Table, @Column, @Enumerated, etc.) 
 * ___Native query___ usage on address related datastores (@Query)
