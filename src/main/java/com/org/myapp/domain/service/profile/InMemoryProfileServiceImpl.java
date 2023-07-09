@@ -37,7 +37,7 @@ public class InMemoryProfileServiceImpl implements ProfileService {
         log.info("ProfileService - generating new uuid {} for profile.", generatedId);
 
         profile.setId(generatedId);
-        this.inMemoryProfileDB.put(generatedId, profile);
+        this.inMemoryProfileDB.put(generatedId, ProfileHelper.getInstance().profileToLowercase(profile));
         return profile;
 
     }
@@ -86,7 +86,7 @@ public class InMemoryProfileServiceImpl implements ProfileService {
                 existingProfile.setAddress(null);
             }
 
-            this.inMemoryProfileDB.put(existingProfile.getId(), existingProfile);
+            this.inMemoryProfileDB.put(existingProfile.getId(), ProfileHelper.getInstance().profileToLowercase(existingProfile));
             return existingProfile;
 
         } else {

@@ -28,7 +28,6 @@ public class ProfileServiceImpl implements ProfileService {
 
     @Value("${profile.search.limit}")
     private int searchLimit;
-
     private ProfileDataStore profileDataStore;
     private AddressValidatorService addressValidatorService;
 
@@ -41,7 +40,7 @@ public class ProfileServiceImpl implements ProfileService {
     @Override
     public Profile createProfile(Profile profile) {
         if (this.addressValidatorService.isValidAddressCombination(profile.getAddress().getCity(), profile.getAddress().getState(), profile.getAddress().getZipCode())){
-            return this.profileDataStore.save(profile);
+            return this.profileDataStore.save(ProfileHelper.getInstance().profileToLowercase(profile));
         }
         return null;
     }
@@ -64,7 +63,7 @@ public class ProfileServiceImpl implements ProfileService {
 
             Optional<Profile> existingProfile = this.profileDataStore.findById(profile.getId());
             if (existingProfile.isPresent()){
-                return this.profileDataStore.save(profile);
+                return this.profileDataStore.save(ProfileHelper.getInstance().profileToLowercase(profile));
             } else {
                 Utils.throwException(new AppException(ExceptionEnum.PR1000, "Profile not found for ID "+profile.getId()));
             }
