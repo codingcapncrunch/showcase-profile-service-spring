@@ -16,7 +16,7 @@ Done - Add basic address validation (city, state, zipcode) based off provided zi
 - Add in-memory cache for address information
 - Manage case sensitivity on profile and address info
 - Allow up to three addresses of any type
-- add seed data scripts
+Done - add seed data scripts
 - add index to email, first and last names, and zipcode( ? not sure)
 Done - Add search API (firstname and lastname combo, email address)
 - Add pagination to search
@@ -29,3 +29,4 @@ Done add created & updated details to domain model objects
 - create custom email field validator to exclude '!' character
 - throw exception for just " " address line two (trim and then validate)
 - check for dirty writes (update timestamp mismatch)
+In Progress - Add contact us email feature
