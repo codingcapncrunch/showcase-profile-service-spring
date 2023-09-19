@@ -29,4 +29,5 @@ Done add created & updated details to domain model objects
 - create custom email field validator to exclude '!' character
 - throw exception for just " " address line two (trim and then validate)
 - check for dirty writes (update timestamp mismatch)
-In Progress - Add contact us email feature
+- Add contactUs tracking number receipt feature
+Done - Add contact us email capture feature

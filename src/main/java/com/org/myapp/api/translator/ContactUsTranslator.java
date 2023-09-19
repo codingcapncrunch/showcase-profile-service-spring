@@ -13,6 +13,8 @@ public class ContactUsTranslator extends Translator<ContactUsRequest, com.org.my
         apiRequest.setContactPhoneNumber(domain.getContactPhoneNumber());
         apiRequest.setContactPhoneNumberCountryCode(domain.getContactPhoneNumberCountryCode());
         apiRequest.setContactEmailAddress(domain.getContactEmailAddress());
+        apiRequest.setId(domain.getId());
+        apiRequest.setContactUsStatus(domain.getContactUsStatus().toString());
         return apiRequest;
     }
 

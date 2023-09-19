@@ -9,7 +9,7 @@ public class ContactUsRequest {
 
     @NotBlank(message = "Message cannot be blank")
     @NotNull(message = "Message cannot be null")
-    @Size(max = 300, message = "Message exceeds max length - 300 characters")
+    @Size(max = 250, message = "Message exceeds max length - 250 characters")
     private String message;
 
     @NotNull(message = "email cannot be null")
@@ -25,4 +25,8 @@ public class ContactUsRequest {
     @Max(value = 999, message = "invalid phone number country code")
     @Min(value = 1, message = "invalid phone number country code")
     private int contactPhoneNumberCountryCode;
+
+    private String contactUsStatus;
+
+    private String id;
 }
