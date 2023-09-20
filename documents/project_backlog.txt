@@ -7,14 +7,14 @@ Done - throw uniform exceptions if invalid data or other exceptions
 Done - used javax for data validation on DTOs
 Done - add MySQL datasource
 Done - add jasypt encryption for datasource pw
-Done - upgrade to springboot 2.7 (did this to troubleshoot/get past jasypt issues)
+Done - upgrade to spring boot 2.7 (did this to troubleshoot/get past jasypt issues)
 Done - wire up a JPA repository and define profile and address entities (local MySQL DB)
 Done - add flyway
 Done - add address type (home, work, other)
 Done - Made address required profile data
 Done - Add basic address validation (city, state, zipcode) based off provided zipcode
 - Add in-memory cache for address information
-- Manage case sensitivity on profile and address info
+Done - Manage case sensitivity on profile and address info
 - Allow up to three addresses of any type
 Done - add seed data scripts
 - add index to email, first and last names, and zipcode( ? not sure)
@@ -28,7 +28,9 @@ Done add created & updated details to domain model objects
 - trim profile pojo data
 - create custom email field validator to exclude '!' character
 - throw exception for just " " address line two (trim and then validate)
-- check for dirty writes (update timestamp mismatch)
+Done - check for dirty writes (update timestamp mismatch)
 - Add contactUs tracking number receipt feature
 Done - Add contact us email capture feature
 Done - Minor improvements on Contact Us (added model return on save and retrieve by ID API)
+
+BUG - initial update timestamp different on save vs update

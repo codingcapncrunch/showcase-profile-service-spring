@@ -59,10 +59,20 @@ public class ProfileServiceImpl implements ProfileService {
     @Override
     public Profile updateProfile(Profile profile) {
 
+        if (profile.getId().isEmpty()){
+            Utils.throwException(new AppException(ExceptionEnum.PR1001, "Update profile does not have a profile id."));
+        }
+
         if (this.addressValidatorService.isValidAddressCombination(profile.getAddress().getCity(), profile.getAddress().getState(), profile.getAddress().getZipCode())){
 
             Optional<Profile> existingProfile = this.profileDataStore.findById(profile.getId());
+
             if (existingProfile.isPresent()){
+
+                if (!existingProfile.get().getUpdateDateTime().equals(profile.getUpdateDateTime())){
+                    Utils.throwException(new AppException(ExceptionEnum.PR1005, "Profile update timestamp does not match - dirty write error for id "+profile.getId()));
+                }
+
                 return this.profileDataStore.save(ProfileHelper.getInstance().profileToLowercase(profile));
             } else {
                 Utils.throwException(new AppException(ExceptionEnum.PR1000, "Profile not found for ID "+profile.getId()));

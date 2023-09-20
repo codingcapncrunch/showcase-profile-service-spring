@@ -11,6 +11,7 @@ public enum ExceptionEnum {
     PR1002("Profile must have a first and last name", HttpStatus.BAD_REQUEST),
     PR1003("dto invalid", HttpStatus.BAD_REQUEST),
     PR1004("Invalid search request", HttpStatus.BAD_REQUEST),
+    PR1005("Update timestamp does not match - dirty write", HttpStatus.BAD_REQUEST),
 
     //address errors
     AD1000("Invalid address validation request", HttpStatus.BAD_REQUEST),

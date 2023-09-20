@@ -3,12 +3,14 @@ package com.org.myapp.api.model;
 import lombok.Data;
 
 import javax.validation.constraints.*;
+import java.time.LocalDateTime;
 
 @Data
 public class ContactUsRequest {
 
     private String id;
     private String contactUsStatus;
+    private LocalDateTime submittedDateTime;
 
     @NotBlank(message = "Message cannot be blank")
     @NotNull(message = "Message cannot be null")

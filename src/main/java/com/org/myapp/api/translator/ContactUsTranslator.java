@@ -15,6 +15,7 @@ public class ContactUsTranslator extends Translator<ContactUsRequest, com.org.my
         apiRequest.setContactEmailAddress(domain.getContactEmailAddress());
         apiRequest.setId(domain.getId());
         apiRequest.setContactUsStatus(domain.getContactUsStatus().toString());
+        apiRequest.setSubmittedDateTime(domain.getSubmittedDateTime());
         return apiRequest;
     }
 

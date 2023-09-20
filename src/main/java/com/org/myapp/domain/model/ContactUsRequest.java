@@ -3,6 +3,7 @@ package com.org.myapp.domain.model;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.SourceType;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
