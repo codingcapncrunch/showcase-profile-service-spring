@@ -30,4 +30,10 @@ public class ContactController {
         return ResponseEntity.ok(this.contactUsService.submitContactUsRequest(this.contactUsTranslator.toDomainModel(contactUsRequest)));
     }
 
+    @GetMapping
+    @RequestMapping(value="/{id}")
+    public ResponseEntity getContactUsRequest(@PathVariable String id){
+        return ResponseEntity.ok(this.contactUsTranslator.toApiModel(this.contactUsService.getContactUsRequest(id)));
+    }
+
 }
