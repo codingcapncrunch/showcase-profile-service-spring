@@ -39,6 +39,9 @@ public class ProfileServiceImpl implements ProfileService {
 
     @Override
     public Profile createProfile(Profile profile) {
+
+        this.isValidAddress(profile);
+
         if (this.addressValidatorService.isValidAddressCombination(profile.getAddress().getCity(), profile.getAddress().getState(), profile.getAddress().getZipCode())){
             return this.profileDataStore.save(ProfileHelper.getInstance().profileToLowercase(profile));
         }
@@ -62,6 +65,8 @@ public class ProfileServiceImpl implements ProfileService {
         if (profile.getId().isEmpty()){
             Utils.throwException(new AppException(ExceptionEnum.PR1001, "Update profile does not have a profile id."));
         }
+
+        this.isValidAddress(profile);
 
         if (this.addressValidatorService.isValidAddressCombination(profile.getAddress().getCity(), profile.getAddress().getState(), profile.getAddress().getZipCode())){
 
@@ -135,6 +140,18 @@ public class ProfileServiceImpl implements ProfileService {
 
         Utils.throwException(new AppException(ExceptionEnum.PR1004));
         return null;
+    }
+
+    // test what javax validator isn't testing
+    private void isValidAddress(Profile profile){
+
+        if (profile.getAddress()!=null){
+            String lineTwo = profile.getAddress().getLineTwo();
+
+            if (!lineTwo.isEmpty() && lineTwo.trim().isEmpty()){
+                Utils.throwException(new AppException(ExceptionEnum.AD1006));
+            }
+        }
     }
 
 }

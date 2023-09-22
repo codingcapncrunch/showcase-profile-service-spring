@@ -20,6 +20,7 @@ public enum ExceptionEnum {
     AD1003("Unknown address zipcode", HttpStatus.BAD_REQUEST),
     AD1004("Unknown address city for state", HttpStatus.BAD_REQUEST),
     AD1005("Unknown address zipcode for state", HttpStatus.BAD_REQUEST),
+    AD1006("Address line two cannot be empty/null", HttpStatus.BAD_REQUEST),
 
     //contactus
     CU1000("ContactUs save error", HttpStatus.INTERNAL_SERVER_ERROR),

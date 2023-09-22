@@ -5,6 +5,7 @@ import com.org.myapp.config.exception.ExceptionEnum;
 import com.org.myapp.utils.Utils;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -54,11 +55,13 @@ public class AddressValidatorServiceImpl implements AddressValidatorService {
     }
 
     @Override
+    @Cacheable("staticAddressData")
     public List<String> getUSStates() {
         return this.addressZipCodeDataStore.findAvailableDistinctStates();
     }
 
     @Override
+    @Cacheable("staticAddressData")
     public List<String> getCitiesByState(String state) {
         if (StringUtils.hasLength(state)){
             return this.addressCityStateDataStore.findAvailableCitiesByState(state);
@@ -69,6 +72,7 @@ public class AddressValidatorServiceImpl implements AddressValidatorService {
     }
 
     @Override
+    @Cacheable("staticAddressData")
     public List<Integer> getZipCodesByState(String state) {
         if (StringUtils.hasLength(state)){
             return this.addressZipCodeDataStore.findAvailableZipCodeByState(state);

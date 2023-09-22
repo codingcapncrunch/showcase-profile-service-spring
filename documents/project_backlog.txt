@@ -13,7 +13,8 @@ Done - add flyway
 Done - add address type (home, work, other)
 Done - Made address required profile data
 Done - Add basic address validation (city, state, zipcode) based off provided zipcode
-- Add in-memory cache for address information
+Done - Add in-memory cache for address information
+Done - Confirm local cache is actually being hit
 Done - Manage case sensitivity on profile and address info
 - Allow up to three addresses of any type
 Done - add seed data scripts
@@ -27,7 +28,7 @@ Done add created & updated details to domain model objects
 - add API authorization
 - trim profile pojo data
 - create custom email field validator to exclude '!' character
-- throw exception for just " " address line two (trim and then validate)
+Done - throw exception for just " " address line two (trim and then validate)
 Done - check for dirty writes (update timestamp mismatch)
 - Add contactUs tracking number receipt feature
 Done - Add contact us email capture feature
